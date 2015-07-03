@@ -63,7 +63,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         @Override
         protected ResponseSearchResult doInBackground(Void... params) {
-            return RetrofitConfig.getInstance().create(YouTubeService.class).searchResult("snippet", "video", keyword, DeveloperKey.DEVELOPER_KEY);
+            return RetrofitConfig.getInstance().create(YouTubeService.class).searchResult("snippet", "video", "20", keyword, DeveloperKey.DEVELOPER_KEY);
         }
 
         @Override

@@ -10,5 +10,5 @@ import retrofit.http.Query;
  */
 public interface YouTubeService {
     @GET("/search")
-    ResponseSearchResult searchResult(@Query("part") String part, @Query("type") String type, @Query("q") String keyword, @Query("key") String apiKey);
+    ResponseSearchResult searchResult(@Query("part") String part, @Query("type") String type, @Query("maxResults") String maxResults, @Query("q") String keyword, @Query("key") String apiKey);
 }
