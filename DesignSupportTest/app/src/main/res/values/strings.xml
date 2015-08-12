@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">DesignSupport</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="open_title">open!!!</string>
+    <string name="close_title">close!!!</string>
+</resources>
