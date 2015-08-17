@@ -1,5 +1,6 @@
 package com.clghks.designsupport;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.NavigationView.OnNavigationItemSelectedListener;
@@ -14,6 +15,7 @@ import android.view.MenuItem;
 import com.clghks.designsupport.fragment.FloatingButtonFragment;
 import com.clghks.designsupport.fragment.FloatingLabelFragment;
 import com.clghks.designsupport.fragment.MainFragment;
+import com.clghks.designsupport.fragment.TabsFragment;
 
 
 public class MainActivity extends AppCompatActivity implements OnNavigationItemSelectedListener{
@@ -60,10 +62,10 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
                 fragment = new FloatingButtonFragment();
                 break;
             case R.id.navi_group1_item3:
-//                fragment = new TabsFragment();
+                fragment = new TabsFragment();
                 break;
             case R.id.navi_group1_item4:
-//                startActivity(new Intent(this, AppBarActivity.class));
+                startActivity(new Intent(this, AppBarActivity.class));
                 break;
         }
 
