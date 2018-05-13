@@ -18,7 +18,7 @@ class MainActivity : BaseActivity() {
         val RC_SIGN_IN = 9001
     }
 
-    private var mGoogleSignInClient: GoogleSignInClient? = null
+    private var signInClient: GoogleSignInClient? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +29,7 @@ class MainActivity : BaseActivity() {
                 .requestEmail()
                 .build()
 
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+        signInClient = GoogleSignIn.getClient(this, gso)
 
         sign_in_button.setOnClickListener {
             signIn()
@@ -46,7 +46,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun signIn() {
-        startActivityForResult(mGoogleSignInClient?.signInIntent, RC_SIGN_IN)
+        startActivityForResult(signInClient?.signInIntent, RC_SIGN_IN)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -81,12 +81,12 @@ class MainActivity : BaseActivity() {
 
     private fun signOut() {
         // Google sign out
-        mGoogleSignInClient?.signOut()?.addOnCompleteListener(this) { updateUI(null) }
+        signInClient?.signOut()?.addOnCompleteListener(this) { updateUI(null) }
     }
 
     private fun signInSilently() {
         showProgressDialog()
-        mGoogleSignInClient?.silentSignIn()?.addOnCompleteListener(this) { task ->
+        signInClient?.silentSignIn()?.addOnCompleteListener(this) { task ->
             updateUI(if (task.isSuccessful) task.result else null)
             hideProgressDialog()
         }
