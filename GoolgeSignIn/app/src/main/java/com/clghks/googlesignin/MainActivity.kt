@@ -9,6 +9,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.games.Games
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -16,6 +17,7 @@ class MainActivity : BaseActivity() {
     companion object {
         val TAG = MainActivity::class.java.simpleName
         val RC_SIGN_IN = 9001
+        val RC_LEADERBOARD_UI = 9004
     }
 
     private var signInClient: GoogleSignInClient? = null
@@ -36,6 +38,16 @@ class MainActivity : BaseActivity() {
 
         sign_out_button.setOnClickListener {
             signOut()
+        }
+
+        game_upload.setOnClickListener {
+            Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this)!!).submitScore(getString(R.string.leaderboard), 1337)
+        }
+
+        game_rank.setOnClickListener {
+            Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this)!!)
+                    .getLeaderboardIntent(getString(R.string.leaderboard))
+                    .addOnSuccessListener { intent -> startActivityForResult(intent, RC_LEADERBOARD_UI) }
         }
     }
 
@@ -71,12 +83,12 @@ class MainActivity : BaseActivity() {
             login_user_email.text = getString(R.string.google_status_fmt, user.email)
 
             sign_in_button.visibility = View.GONE
-            sign_out_button.visibility = View.VISIBLE
+            sign_button_layout.visibility = View.VISIBLE
         } else {
             login_user_email.text = getString(R.string.signed_out)
 
             sign_in_button.visibility = View.VISIBLE
-            sign_out_button.visibility = View.GONE
+            sign_button_layout.visibility = View.GONE
         }
     }
 

@@ -19,4 +19,6 @@
          NOTE: You can find this file by clicking the `Get Resources` link in
          the Events, Achievements, or Leaderboards menu of the Google Play Console. -->
     <string name="app_id">968261397199</string>
+    <!-- leaderboard 랭킹 -->
+    <string name="leaderboard" translatable="false">CgkIz9WBh5ccEAIQAA</string>
 </resources>
