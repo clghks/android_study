@@ -1,10 +1,9 @@
 package com.clghks.googlesignin
 
-import android.support.v7.app.AppCompatActivity
 import android.app.ProgressDialog
 import android.content.Context
 import android.support.annotation.VisibleForTesting
-import android.content.Context.INPUT_METHOD_SERVICE
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 
